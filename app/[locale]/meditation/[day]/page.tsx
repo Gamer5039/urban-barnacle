@@ -142,13 +142,14 @@ export default function MeditationDay() {
   };
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.addEventListener('ended', handleAudioEnded);
-      return () => {
-        audioRef.current?.removeEventListener('ended', handleAudioEnded);
-      };
-    }
-  }, [dayNumber]);
+    if (!audioRef.current) return;
+    
+    const currentAudio = audioRef.current;
+    currentAudio.addEventListener('ended', handleAudioEnded);
+    return () => {
+      currentAudio.removeEventListener('ended', handleAudioEnded);
+    };
+  }, [dayNumber, handleAudioEnded]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 
 const MEDITATION_CONTENT = {
   'day-1': {
@@ -127,6 +127,7 @@ export default function MeditationPage() {
           <section className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
             <h2 className="text-xl font-semibold mb-4">Today's Learning</h2>
             <div className="prose prose-invert max-w-none">
+              <p className="text-lg mb-4">Let&apos;s begin today&apos;s meditation session.</p>
               {content.article.split('\n\n').map((paragraph, index) => (
                 <p key={index} className="mb-4">
                   {paragraph}

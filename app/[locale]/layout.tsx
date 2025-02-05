@@ -13,7 +13,7 @@ interface LocaleLayoutProps {
   };
 }
 
-export async function generateMetadata({ params }: LocaleLayoutProps) {
+export async function generateMetadata() {
   const locale = await requestLocale();
   
   return {
@@ -34,13 +34,12 @@ export async function generateMetadata({ params }: LocaleLayoutProps) {
 import ClientLayout from './ClientLayout';
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
-  const locale = await requestLocale();
-  const messages = await getMessages(locale);
+  const messages = await getMessages(params.locale);
 
   return (
-    <html lang={locale}>
+    <html lang={params.locale}>
       <body className={inter.className}>
-        <ClientLayout locale={locale} messages={messages}>
+        <ClientLayout locale={params.locale} messages={messages}>
           {children}
         </ClientLayout>
       </body>

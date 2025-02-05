@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, Suspense, use } from 'react';
+import { useEffect, useState, Suspense, use, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import useUserStore from '@/lib/store/userStore';
@@ -120,6 +120,20 @@ function MeditationContent({ id }: { id: number }) {
   
   const content = meditationContent[id as keyof typeof meditationContent];
 
+  const handleDayCompletion = useCallback(async () => {
+    if (!currentUser?.progress) return;
+
+    const newProgress = {
+      ...currentUser.progress,
+      currentDay: Math.max(currentUser.progress.currentDay, id + 1),
+      completedDays: Array.from(new Set([...currentUser.progress.completedDays, id])),
+      lastSessionDate: new Date().toISOString(),
+      streakCount: currentUser.progress.streakCount + 1
+    };
+
+    await updateProgress(newProgress);
+  }, [currentUser?.progress, id, updateProgress]);
+
   useEffect(() => {
     if (!isAuthenticated()) {
       router.replace('/auth');
@@ -167,23 +181,11 @@ function MeditationContent({ id }: { id: number }) {
   }, [isAuthenticated, currentUser, router, id, content]);
 
   useEffect(() => {
-    if (audioCompleted && articleRead && !dayCompleted) {
+    if (audioCompleted && articleRead) {
       setDayCompleted(true);
       handleDayCompletion();
     }
-  }, [audioCompleted, articleRead]);
-
-  const handleDayCompletion = async () => {
-    if (!currentUser?.progress) return;
-
-    const newProgress = {
-      ...currentUser.progress,
-      currentDay: Math.max(currentUser.progress.currentDay, id + 1),
-      completedDays: Array.from(new Set([...currentUser.progress.completedDays, id]))
-    };
-
-    await updateProgress(newProgress);
-  };
+  }, [audioCompleted, articleRead, handleDayCompletion]);
 
   const toggleAudio = () => {
     if (!audio) return;

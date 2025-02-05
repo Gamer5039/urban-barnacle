@@ -7,7 +7,7 @@ import useUserStore from '@/lib/store/userStore';
 interface ClientLayoutProps {
   children: React.ReactNode;
   locale: string;
-  messages: any;
+  messages: Record<string, Record<string, string>>;
 }
 
 export default function ClientLayout({ children, locale, messages }: ClientLayoutProps) {
