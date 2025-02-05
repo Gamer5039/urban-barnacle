@@ -13,8 +13,6 @@ interface LocaleLayoutProps {
 }
 
 export async function generateMetadata() {
-  const locale = await requestLocale();
-  
   return {
     title: 'Axora - Guided Meditation',
     description: 'Start your mindfulness journey with guided meditation',

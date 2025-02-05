@@ -128,7 +128,7 @@ export default function MeditationPage() {
             <h2 className="text-xl font-semibold mb-4">Today's Learning</h2>
             <div className="prose prose-invert max-w-none">
               <p key={0} className="mb-4">
-                Let's begin today's meditation session.
+                Let&apos;s begin today&apos;s meditation session.
               </p>
               {content.article.split('\n\n').map((paragraph, index) => (
                 <p key={index + 1} className="mb-4">

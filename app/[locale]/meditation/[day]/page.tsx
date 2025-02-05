@@ -115,6 +115,23 @@ export default function MeditationDay() {
 
   const content = meditationData[locale]?.[day];
 
+  const handleAudioEnded = useCallback(() => {
+    setIsPlaying(false);
+    if (currentUser?.email) {
+      markDayCompleted(dayNumber);
+    }
+  }, [currentUser?.email, dayNumber, markDayCompleted]);
+
+  useEffect(() => {
+    const currentAudio = audioRef.current;
+    if (!currentAudio) return;
+    
+    currentAudio.addEventListener('ended', handleAudioEnded);
+    return () => {
+      currentAudio.removeEventListener('ended', handleAudioEnded);
+    };
+  }, [handleAudioEnded]);
+
   if (!content || !isDayUnlocked(dayNumber)) {
     router.push(`/${locale}/dashboard`);
     return null;
@@ -133,23 +150,6 @@ export default function MeditationDay() {
       setIsPlaying(!isPlaying);
     }
   };
-
-  const handleAudioEnded = useCallback(() => {
-    setIsPlaying(false);
-    if (currentUser?.email) {
-      markDayCompleted(dayNumber);
-    }
-  }, [currentUser?.email, dayNumber, markDayCompleted]);
-
-  useEffect(() => {
-    const currentAudio = audioRef.current;
-    if (!currentAudio) return;
-    
-    currentAudio.addEventListener('ended', handleAudioEnded);
-    return () => {
-      currentAudio.removeEventListener('ended', handleAudioEnded);
-    };
-  }, [handleAudioEnded]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
