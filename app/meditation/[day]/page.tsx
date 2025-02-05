@@ -125,7 +125,7 @@ export default function MeditationPage() {
 
           {/* Article Section */}
           <section className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Today's Learning</h2>
+            <h2 className="text-xl font-semibold mb-4">Today&apos;s Learning</h2>
             <div className="prose prose-invert max-w-none">
               <p key={0} className="mb-4">
                 Let&apos;s begin today&apos;s meditation session.
