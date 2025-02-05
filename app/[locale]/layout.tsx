@@ -1,4 +1,3 @@
-import { NextIntlClientProvider } from 'next-intl';
 import { Inter } from 'next/font/google';
 import { requestLocale } from '@/i18n/locales';
 import { getMessages } from '@/i18n/request';

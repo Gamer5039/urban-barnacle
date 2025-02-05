@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { useParams, useRouter } from 'next/navigation';
 import { useMeditationProgress } from '@/lib/store/meditationProgress';
@@ -134,22 +134,22 @@ export default function MeditationDay() {
     }
   };
 
-  const handleAudioEnded = () => {
+  const handleAudioEnded = useCallback(() => {
     setIsPlaying(false);
     if (currentUser?.email) {
       markDayCompleted(dayNumber);
     }
-  };
+  }, [currentUser?.email, dayNumber, markDayCompleted]);
 
   useEffect(() => {
-    if (!audioRef.current) return;
-    
     const currentAudio = audioRef.current;
+    if (!currentAudio) return;
+    
     currentAudio.addEventListener('ended', handleAudioEnded);
     return () => {
       currentAudio.removeEventListener('ended', handleAudioEnded);
     };
-  }, [dayNumber, handleAudioEnded]);
+  }, [handleAudioEnded]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
