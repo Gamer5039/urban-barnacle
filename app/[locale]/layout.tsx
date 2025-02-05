@@ -4,14 +4,14 @@ import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-interface LocaleLayoutProps {
+type LayoutProps = {
   children: React.ReactNode;
   params: {
     locale: string;
   };
 }
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: LayoutProps) {
   return {
     title: 'Axora - Guided Meditation',
     description: 'Start your mindfulness journey with guided meditation',
@@ -29,7 +29,7 @@ export async function generateMetadata() {
 // Client Component
 import ClientLayout from './ClientLayout';
 
-export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+export default async function LocaleLayout({ children, params }: LayoutProps) {
   const messages = await getMessages(params.locale);
 
   return (
