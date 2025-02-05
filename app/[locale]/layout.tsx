@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: LayoutProps) {
     description: 'Start your mindfulness journey with guided meditation',
     metadataBase: new URL('http://localhost:3000'),
     alternates: {
-      canonical: '/',
+      canonical: `/${params.locale}`,
       languages: {
         'en-US': '/en',
         'hi-IN': '/hi',
