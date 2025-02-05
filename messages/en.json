@@ -1,0 +1,92 @@
+{
+  "home": {
+    "title": "Welcome to {appName}",
+    "subtitle": "Begin your journey to mindfulness and inner peace through guided meditation",
+    "benefits": "Experience reduced stress, better focus, improved sleep, and enhanced well-being through our step-by-step meditation journey",
+    "tapToContinue": "Start Your Journey"
+  },
+  "features": {
+    "dailyPractice": {
+      "title": "Daily Practice",
+      "description": "Step-by-step guided meditation journey"
+    },
+    "expertGuidance": {
+      "title": "Expert Guidance",
+      "description": "Audio guides and detailed articles"
+    },
+    "trackProgress": {
+      "title": "Track Progress",
+      "description": "Monitor your meditation journey"
+    }
+  },
+  "landing": {
+    "title": "Welcome to Axora",
+    "description": "Begin your journey to inner peace and mindfulness through guided meditation",
+    "getStarted": "Get Started",
+    "features": {
+      "daily": {
+        "title": "Daily Practice",
+        "description": "Build a consistent meditation habit with our structured daily sessions"
+      },
+      "guided": {
+        "title": "Guided Meditation",
+        "description": "Expert-led sessions to help you achieve deeper states of relaxation"
+      },
+      "progress": {
+        "title": "Track Progress",
+        "description": "Monitor your meditation journey and see your growth over time"
+      }
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "switchToLogin": "Already have an account? Login",
+    "switchToRegister": "Don't have an account? Register",
+    "passwordMismatch": "Passwords do not match",
+    "unknownError": "An error occurred. Please try again.",
+    "invalidCredentials": "Invalid email or password",
+    "emailExists": "Email already exists",
+    "submit": "Submit",
+    "loginSuccess": "Login successful!",
+    "registerSuccess": "Registration successful!"
+  },
+  "meditation": {
+    "yourJourney": "Your Meditation Journey",
+    "journeyDescription": "Take a moment each day to find peace and clarity",
+    "day": "Day",
+    "beginSession": "Begin Session",
+    "revisit": "Revisit Session",
+    "completePrevious": "Complete Previous Day",
+    "guidedMeditation": "Guided Meditation",
+    "todaysLearning": "Today's Learning",
+    "markAsRead": "Mark Article as Read",
+    "progress": "Progress",
+    "completeAudio": "Complete Audio Session",
+    "readArticle": "Read Article",
+    "unlockNext": "Complete & Unlock Next Day",
+    "audioGuide": "Audio Guide",
+    "play": "Play Audio",
+    "pause": "Pause Audio",
+    "audioCompleted": "Audio Completed ",
+    "articleRead": "Article Read ",
+    "nextDay": "Continue to Next Day",
+    "instructions": "Instructions"
+  },
+  "dashboard": {
+    "welcome": "Welcome to Your Meditation Journey",
+    "progress": "Your Progress",
+    "lastSession": "Last Session",
+    "noSessions": "No sessions completed yet",
+    "logout": "Logout",
+    "days": {
+      "locked": "Locked",
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "start": "Start Day"
+    }
+  }
+}
