@@ -4,20 +4,23 @@ import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-type LayoutProps = {
-  children: React.ReactNode;
-  params: {
-    locale: string;
-  };
+interface PageParams {
+  locale: string;
 }
 
-export async function generateMetadata({ params }: LayoutProps) {
+interface PageProps {
+  params: Promise<PageParams>;
+  children: React.ReactNode;
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { locale } = await params;
   return {
     title: 'Axora - Guided Meditation',
     description: 'Start your mindfulness journey with guided meditation',
     metadataBase: new URL('http://localhost:3000'),
     alternates: {
-      canonical: `/${params.locale}`,
+      canonical: `/${locale}`,
       languages: {
         'en-US': '/en',
         'hi-IN': '/hi',
@@ -29,13 +32,14 @@ export async function generateMetadata({ params }: LayoutProps) {
 // Client Component
 import ClientLayout from './ClientLayout';
 
-export default async function LocaleLayout({ children, params }: LayoutProps) {
-  const messages = await getMessages(params.locale);
+export default async function LocaleLayout({ children, params }: PageProps) {
+  const { locale } = await params;
+  const messages = await getMessages(locale);
 
   return (
-    <html lang={params.locale}>
+    <html lang={locale}>
       <body className={inter.className}>
-        <ClientLayout locale={params.locale} messages={messages}>
+        <ClientLayout locale={locale} messages={messages}>
           {children}
         </ClientLayout>
       </body>
