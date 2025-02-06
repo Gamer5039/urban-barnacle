@@ -4,11 +4,10 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-4">
       <div className="max-w-3xl mx-auto text-center space-y-8">
-        <h1 className="text-5xl font-bold mb-6">Welcome to Inner Peace</h1>
-        
+        <h1 className="text-5xl font-bold mb-6">Welcome to Axora - Test Update</h1>
         <div className="space-y-4">
           <p className="text-xl">
-            Begin your journey to mindfulness and inner peace through guided meditation.
+            Begin your journey to mindfulness and peace through guided meditation.
           </p>
           <p className="text-lg opacity-90">
             Experience reduced stress, better focus, improved sleep, and enhanced well-being

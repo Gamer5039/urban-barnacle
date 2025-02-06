@@ -41,13 +41,14 @@ export default function MeditationDay() {
   const meditationData: MeditationData = {
     en: {
       'day-1': {
-        title: 'Introduction to Meditation',
+        title: 'Ek aadat banana',
         audioUrl: `/api/audio?day=${dayNumber}&locale=${locale}`,
         article: `
           Meditation is a practice that has been used for thousands of years to develop awareness of the present moment. It involves focusing your mind on a particular object, thought, or activity to achieve mental clarity and emotional calmness.
 
           In this first session, we'll learn the basic posture and breathing techniques that form the foundation of meditation practice.
-
+          hello
+          TEST CHANGE - PLEASE CHECK IF THIS APPEARS
           Key Points:
           1. Find a comfortable seated position
           2. Keep your back straight but not rigid

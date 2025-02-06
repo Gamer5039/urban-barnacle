@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import useUserStore from '@/lib/store/userStore';
+import { motion } from 'framer-motion';
 
 export default function Landing() {
   const t = useTranslations('landing');
@@ -16,26 +17,71 @@ export default function Landing() {
     }
   }, [isAuthenticated, router]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {t('title')}
-          </h1>
-          <p className="text-xl md:text-2xl mb-12">
-            {t('description')}
-          </p>
-          <button
-            onClick={() => router.push('/auth')}
-            className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-semibold 
-                     hover:bg-indigo-100 transition-colors duration-200"
+      <motion.div 
+        className="container mx-auto px-4 py-16"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="text-center text-white"
+          variants={itemVariants}
+        >
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold mb-6"
+            variants={itemVariants}
           >
-            {t('getStarted')}
-          </button>
-        </div>
+            {t('title')}
+          </motion.h1>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-20">
+          <motion.p 
+            className="text-xl md:text-2xl mb-12"
+            variants={itemVariants}
+          >
+            {t('description')}
+          </motion.p>
+
+          <motion.div 
+            className="space-y-4 md:space-y-0 md:space-x-4"
+            variants={itemVariants}
+          >
+            <button
+              onClick={() => router.push('/auth')}
+              className="inline-block px-8 py-3 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 transform hover:scale-105 transition-all duration-200"
+            >
+              {t('getStarted')}
+            </button>
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          className="grid md:grid-cols-3 gap-8 mt-20"
+          variants={itemVariants}
+        >
           <FeatureCard
             title={t('features.daily.title')}
             description={t('features.daily.description')}
@@ -48,8 +94,8 @@ export default function Landing() {
             title={t('features.progress.title')}
             description={t('features.progress.description')}
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </main>
   );
 }

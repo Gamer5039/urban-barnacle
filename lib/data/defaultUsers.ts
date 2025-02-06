@@ -37,5 +37,14 @@ export const defaultUsers = {
       "lastSessionDate": null,
       "streakCount": 0
     }
+  },
+  "gg.rehan1234@gmail.com": {
+    "password": "1",
+    "progress": {
+      "currentDay": 1,
+      "completedDays": [],
+      "lastSessionDate": null,
+      "streakCount": 0
+    }
   }
 };
