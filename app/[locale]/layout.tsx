@@ -1,19 +1,18 @@
 import { Inter } from 'next/font/google';
 import { getMessages } from '@/i18n/request';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-interface PageParams {
-  locale: string;
-}
-
-interface PageProps {
-  params: Promise<PageParams>;
+type LayoutProps = {
   children: React.ReactNode;
-}
+  params: Promise<{
+    locale: string;
+  }>;
+};
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: LayoutProps) {
   const { locale } = await params;
   return {
     title: 'Axora - Guided Meditation',
@@ -32,7 +31,7 @@ export async function generateMetadata({ params }: PageProps) {
 // Client Component
 import ClientLayout from './ClientLayout';
 
-export default async function LocaleLayout({ children, params }: PageProps) {
+export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   const messages = await getMessages(locale);
 
@@ -42,6 +41,7 @@ export default async function LocaleLayout({ children, params }: PageProps) {
         <ClientLayout locale={locale} messages={messages}>
           {children}
         </ClientLayout>
+        <SpeedInsights />
       </body>
     </html>
   );
