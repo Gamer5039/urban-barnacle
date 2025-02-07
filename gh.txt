@@ -1,0 +1,14 @@
+npm run dev
+
+git add .
+
+git commit -m "New Fix 20"
+
+git push
+
+https://youtu.be/EM97BNARSzs?si=doEZyyRepTzvj0uw
+
+
+npm run build
+
+yesroot80+siamroos@gmail.com
